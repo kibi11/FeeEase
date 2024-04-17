@@ -1,0 +1,63 @@
+{
+    "data": [{
+            "key": "1",
+            "label": "Admission Number in Present School",
+            "type": "input"
+        },
+        {
+            "key": "2",
+            "label": "Admission Date(DD / MM / YYYY) in Present School",
+            "type": "date"
+        },
+        {
+            "key": "3",
+            "label": "Class/Section",
+            "type": "input"
+        },
+        {
+            "key": "4",
+            "label": "Roll No",
+            "type": "number"
+        },
+        {
+            "key": "5",
+            "label": "Medium of Instruction",
+            "type": "Select"
+        },
+        {
+            "key": "6",
+            "label": "Academic Stream opted by student",
+            "type": "input"
+        },
+        {
+            "key": "7",
+            "label": "Status of Student in Previous Academic Year Schooling(2022 - 23)",
+            "type": "input"
+        },
+        {
+            "key": "8",
+            "label": "Grade / Class Studied in the Previous / Last Academic(2022 - 23)",
+            "type": "input"
+        },
+        {
+            "key": "9",
+            "label": "Admitted / Enrolled Under(Only for Pvt.Unaided)",
+            "type": "input"
+        },
+        {
+            "key": "10",
+            "label": "In the previous class Studied - result of the examinations",
+            "type": "select"
+        },
+        {
+            "key": "11",
+            "label": "Marks Obtained( in Percentage)",
+            "type": "number"
+        },
+        {
+            "key": "12",
+            "label": "No.of days child attended school( in the previous academic year)",
+            "type": "number"
+        }
+    ]
+}

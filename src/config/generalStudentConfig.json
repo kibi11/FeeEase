@@ -1,0 +1,138 @@
+{
+    "data": [{
+            "key": "1",
+            "label": "Student's Name (as per School Record)",
+            "type": "input"
+        },
+        {
+            "key": "2",
+            "label": "Gender",
+            "type": "select"
+        },
+        {
+            "key": "3",
+            "label": "Date of Birth (DD/MM/YYYY)",
+            "type": "date"
+        },
+        {
+            "key": "4",
+            "label": "Permanent Education Number",
+            "type": "number"
+        },
+        {
+            "key": "5",
+            "label": "Mother's Name",
+            "type": "input"
+        },
+        {
+            "key": "6",
+            "label": "Father's Name",
+            "type": "input"
+        },
+        {
+            "key": "7",
+            "label": "Guardian's Name",
+            "type": "input"
+        },
+        {
+            "key": "8",
+            "label": "Aadhaar Number of Student",
+            "type": "number"
+        },
+        {
+            "key": "9",
+            "label": "Name of Student as per/in Aadhaar Card",
+            "type": "input"
+        },
+        {
+            "key": "10",
+            "label": "Address",
+            "type": "text"
+        },
+        {
+            "key": "11",
+            "label": "Pincode",
+            "type": "number"
+        },
+        {
+            "key": "12",
+            "label": "Mobile Number",
+            "type": "number"
+        },
+        {
+            "key": "13",
+            "label": "Alternate Mobile Number",
+            "type": "number"
+        },
+        {
+            "key": "14",
+            "label": "Contact email-id",
+            "type": "input"
+        },
+        {
+            "key": "15",
+            "label": "Mother Tongue of the Student",
+            "type": "input"
+        },
+        {
+            "key": "16",
+            "label": "Social Category",
+            "type": "select"
+        },
+        {
+            "key": "17",
+            "label": "Minority Group",
+            "type": "select"
+        },
+        {
+            "key": "18",
+            "label": "Whether BPL beneficiary",
+            "type": "select"
+        },
+        {
+            "key": "19",
+            "label": "Whether Antyodaya Anna Yojana (AAY) beneficiary",
+            "type": "select"
+        },
+        {
+            "key": "20",
+            "label": "Whether belongs to EWS / Disadvantaged Group",
+            "type": "select"
+        },
+        {
+            "key": "21",
+            "label": "Whether CWSN",
+            "type": "select"
+        },
+        {
+            "key": "22",
+            "label": "type of Impairments",
+            "type": "select"
+        },
+        {
+            "key": "23",
+            "label": "Indian Nationality",
+            "type": "select"
+        },
+        {
+            "key": "24",
+            "label": "Is Child Identified as Out of School-Child",
+            "type": "select"
+        },
+        {
+            "key": "25",
+            "label": "When the Child is mainstreamed",
+            "type": "select"
+        },
+        {
+            "key": "26",
+            "label": "Disability Percentage (in %)",
+            "type": "number"
+        },
+        {
+            "key": "27",
+            "label": "Blood Group",
+            "type": "number"
+        }
+    ]
+}

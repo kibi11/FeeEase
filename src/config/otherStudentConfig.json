@@ -1,0 +1,103 @@
+{
+    "data": [{
+            "key": "1",
+            "label": "Whether Facilities provided to the Student (for the year of filling data)",
+            "type": "select"
+        },
+        {
+            "key": "2",
+            "label": "Central Scholarship Received (Previous Academic year)",
+            "type": "select"
+        },
+        {
+            "key": "3",
+            "label": "Code & Name of Scholarship",
+            "type": "input"
+        },
+        {
+            "key": "4",
+            "label": "State Scholarship Received (Previous Academic year)",
+            "type": "select"
+        },
+        {
+            "key": "5",
+            "label": "Other Scholarship Received (Previous Academic year)",
+            "type": "select"
+        },
+        {
+            "key": "6",
+            "label": "Scholarship Amount",
+            "type": "select"
+        },
+        {
+            "key": "7",
+            "label": "Facilities provided to Student in case of CWSN (for the year of filling data)",
+            "type": "input"
+        },
+        {
+            "key": "8",
+            "label": "Whether Student has been screened for Specific Learning Disability (SLD)",
+            "type": "select"
+        },
+        {
+            "key": "9",
+            "label": "SLD Type",
+            "type": "input"
+        },
+        {
+            "key": "10",
+            "label": "Whether Student has been screened for Autism Spectrum Disorder (ASD)",
+            "type": "select"
+        },
+        {
+            "key": "11",
+            "label": "Whether Student has been screened for Attention Deficit Hyperactive Disorder (ADHD)",
+            "type": "select"
+        },
+        {
+            "key": "12",
+            "label": "Is the student involved in any extracurricular activity?",
+            "type": "select"
+        },
+        {
+            "key": "13",
+            "label": "Has the Student been identified as a gifted / talented in following",
+            "type": "select"
+        },
+        {
+            "key": "14",
+            "label": "Whether provided mentors?",
+            "type": "input"
+        },
+        {
+            "key": "15",
+            "label": "Whether the student participated in nurturance camps",
+            "type": "input"
+        },
+        {
+            "key": "16",
+            "label": "Has the student appeared in State Level Competitions/ Olympiads/National level Competitions?",
+            "type": "select"
+        },
+        {
+            "key": "17",
+            "label": "Does the Student participate in NCC/ NSS/ Scouts and Guides?",
+            "type": "select"
+        },
+        {
+            "key": "18",
+            "label": "Whether student is capable of handling digital devices including the internet?",
+            "type": "select"
+        },
+        {
+            "key": "19",
+            "label": "Student's Height (in CMs)",
+            "type": "number"
+        },
+        {
+            "key": "20",
+            "label": "Student's Weight (in KGs)",
+            "type": "number"
+        }
+    ]
+}
