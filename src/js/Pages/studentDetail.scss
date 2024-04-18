@@ -5,4 +5,35 @@ h1{
 .student-detail-container{
     height: 100%;
     overflow: auto;
+    padding-right: 20px;
+    .input-label div:first-child{
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+
+    }
+    .input-label div:first-child > div:first-child {
+        
+            max-height: 70px !important;
+            text-wrap: wrap;
+            max-width: none;
+            text-align:start;
+            height: 55px !important;
+            max-width: 400px;
+            flex-basis: auto;
+            
+        
+    }
+    .input-label div:first-child > div:nth-child(2) {
+        height: 32px;
+        div{
+            height: 32px;
+            max-width: none;
+            div{
+                height: 32px !important;
+            }
+        }
+    }
 }

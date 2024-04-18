@@ -1,0 +1,8 @@
+.demo-loadmore-list {
+    min-height: 350px;
+    overflow: auto;
+    height: calc(100% - 64px );
+    padding: 24px;
+  }
+.demo-loadmore-list > ul {
+}

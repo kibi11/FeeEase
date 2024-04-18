@@ -62,11 +62,11 @@ function Dashboard () {
     const contentItems = [
         {
             key: '1',
-            componentItem: <StudentDetail/>
+            componentItem: <FeeManagement/>
         },
         {
             key: '2',
-            componentItem: <FeeManagement/>
+            componentItem: <StudentDetail/>
         }
     ]
 

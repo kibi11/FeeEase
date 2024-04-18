@@ -52,13 +52,13 @@ const StudentDetail = () => {
     switch (item?.type) {
         case 'input':
             return(
-                <Form.Item label={item?.label}>
+                <Form.Item label={item?.label} className="input-label">
                     <Input/>
                 </Form.Item>
             )
         case 'select':
             return(
-                <Form.Item label={item?.label}>
+                <Form.Item label={item?.label} className="input-label">
                     <Select>
                         {
                             item?.options?.map(options => {
@@ -72,19 +72,19 @@ const StudentDetail = () => {
             )
         case 'date':
             return(
-                <Form.Item label={item?.label}>
+                <Form.Item label={item?.label} className="input-label">
                     <DatePicker format={'DD/MM/YYYY'}/>
                 </Form.Item>
             )
         case 'number':
             return(
-                <Form.Item label={item?.label}>
+                <Form.Item label={item?.label} className="input-label">
                     <InputNumber/>
                 </Form.Item>
             )
         case 'text':
             return(
-                <Form.Item label={item?.label}>
+                <Form.Item label={item?.label} className="input-label">
                     <TextArea rows={4}/>
                 </Form.Item>
             )
@@ -115,7 +115,7 @@ const StudentDetail = () => {
                         overflow: 'auto'
                         }}
                     >
-                        <Divider orientation="left">General Information</Divider>
+                        <Divider orientation="left" style={{margin: '0 0 30px 0'}}>General Information</Divider>
                         {
                            generalStudentDetailItems.map(studentItem => {
                                 return (
@@ -125,7 +125,7 @@ const StudentDetail = () => {
                                 )        
                            })
                         }
-                        <Divider orientation="left">Enrollment Details</Divider>
+                        <Divider orientation="left" style={{margin: '30px 0'}}>Enrollment Details</Divider>
                         {
                            enrollmentStudentDetailItems.map(studentItem => {
                                 return (
@@ -135,7 +135,7 @@ const StudentDetail = () => {
                                 )        
                            })
                         }
-                        <Divider orientation="left">Other Details</Divider>
+                        <Divider orientation="left" style={{margin: '30px 0'}}>Other Details</Divider>
                         {
                            OtherStudentDetailItems.map(studentItem => {
                                 return (
@@ -145,6 +145,8 @@ const StudentDetail = () => {
                                 )        
                            })
                         }
+                        <Button >Save</Button>
+                        <Button>Cancel</Button>
                     </Form>
                     </div>
                 </>

@@ -13,7 +13,8 @@ function createWindow(){
       backgroundColor: "white",
       webPreferences: {
         nodeIntegration: false,
-        contextIsolation: true
+        contextIsolation: true,
+        preload: path.join(__dirname , 'preload.js'),
       }
     });
 
@@ -25,4 +26,9 @@ require('electron-reload')(__dirname, {
 })
 
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  {
+    createWindow();
+    require('./src/services/postgressService');
+  }
+});
