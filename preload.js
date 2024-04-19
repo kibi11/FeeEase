@@ -1,15 +1,22 @@
 const {ipcRenderer , contextBridge} = require('electron');
-import {dbOperations} from './src/services/postgressService';
+// const { dbOperations }  = require('./src/services/postgressService'); 
 
-contextBridge.exposeInMainWorld('electron', {
-    Api: {
-        search(message) {
-            console.log("this is the message", message);
-            ipcRenderer.send('notify', message);
-        },
-        fetchAll(){
-            console.log("This is fetching all the details");
-            ipcRenderer.send('fetchAll');w
-        }
+contextBridge.exposeInMainWorld('electronAPI', {
+    search: (value) => {
+        const result = ipcRenderer.sendSync('search-api', value);
+        console.log("this is preload file", result);
+        return result;
     }
+    
+    
+    // : {
+    //     search(message) {
+    //         console.log("this is the message", message);
+    //         ipcRenderer.send('notify', message);
+    //     },
+    //     fetchAll(){
+    //         console.log("This is fetching all the details");
+    //         ipcRenderer.send('fetchAll');w
+    //     }
+    // }
 })

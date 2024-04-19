@@ -13,7 +13,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Flex, Layout, Menu, theme } from 'antd';
 import './Dashboard.scss';
-import logoDark from "./../../../public/images/Logo_Dark.png";
+import logoDark from "./../../assets/Logo_Dark.png";
 import logoLight from "./../../../public/images/Logo_Light.png";
 import getDate from '../utils/Date';
 import StudentDetail from './studentDetail';

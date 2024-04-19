@@ -1,6 +1,7 @@
 // main.js
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const {dbOperations} = require('./src/services/postgressService.js');
 
 let mainWindow;
 
@@ -15,7 +16,8 @@ function createWindow(){
         nodeIntegration: false,
         contextIsolation: true,
         preload: path.join(__dirname , 'preload.js'),
-      }
+      },
+      icon: path.join(__dirname , 'favicon.ico')
     });
 
     mainWindow.loadFile('index.html');    
@@ -28,6 +30,18 @@ require('electron-reload')(__dirname, {
 
 app.whenReady().then(() => {
   {
+    ipcMain.on('search-api', async (event , value) => {
+      console.log("This is ipc Main", value);
+      let results;
+      if(value.length == 0) {
+         results = await dbOperations(`SELECT * FROM student_details;`, value);
+      }else {
+         results = await dbOperations(`SELECT * FROM student_details where '${value}' % ANY(STRING_TO_ARRAY(name,' '));`);
+      } 
+      console.log("This is result in ipc main", results);
+      event.returnValue = results;
+      return results;
+    })
     createWindow();
     require('./src/services/postgressService');
   }

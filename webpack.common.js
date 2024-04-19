@@ -35,18 +35,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|gif)$/,
         loader: 'url-loader',
         options: {
           limit: 25000,
         },
       },
       {
-          test: /\.(jpg|png|svg)$/,
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-          },
+          test: /\.(jpg|png|svg|gif)$/i,
+          type: 'asset/resource',
       },
     ]
   },
@@ -56,5 +53,6 @@ module.exports = {
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'build', 'js'),
+    assetModuleFilename: 'assets/[name][ext]'
   },
 };

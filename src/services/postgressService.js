@@ -1,63 +1,29 @@
 const {Client} = require('pg');
 
-const client = new Client({
-    user: "postgres",
-    password: "arpan123",
-    host: "localhost",
-    database: 'ckgsDB'
-});
 
-// Connect to the database
-    // client
-    //     .connect()
-    //     .then(() => {
-    //             console.log('Connected to PostgreSQL database');
+const dbOperations = async (query , values) => {
 
-    //             // Execute SQL queries here
+        console.log("This is postgresService.js",query,values);
 
-    //             client.query('SELECT * FROM student_details', (err, result) => {
-    //                 if (err) {
-    //                     console.error('Error executing query', err);
-    //                 } else {
-    //                     console.log('Query result:', result.rows);
-    //                 }
+        const client = new Client({
+            user: "postgres",
+            password: "arpan123",
+            host: "localhost",
+            database: 'ckgsDB'
+        });
 
-                    
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             console.error('Error connecting to PostgreSQL database', err);
-    //         });
-    
-    const dbOperations = (command , query , values) => {
+        try {
+            await client.connect();
+            console.log("connection established");
+            console.log("The query made is ", query);
+            const result = await client.query(query);
+            client.end();
+            console.log("connection ended");
+            console.log("This is service",result);
+            return result?.rows;
+        } catch (error) {
+            console.error('Error:',error);
+        }
+}
 
-        client
-            .connect()
-            .then(async () => 
-            {           
-                const result = await client.query(query, values, (err, result) => {
-                    if (err) {
-                        console.error('Error executing query', err);
-                    } else {
-                        console.log('Query result:', result.rows);
-                    }});
-                    
-                    // Close the connection when done
-                    client
-                    .end()
-                    .then(() => {
-                        console.log('Connection to PostgreSQL closed');
-                    })
-                    .catch((err) => {
-                        console.error('Error closing connection', err);
-                    });
-                    return result?.rows;
-
-            })
-            .catch((err) => {
-                console.error('Error:', err);
-            })
-
-    }
-
-    export default {dbOperations};
+module.exports = {dbOperations};

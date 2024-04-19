@@ -11,19 +11,24 @@ const {Search} = Input;
 
 const FeeManagement = () => {
 
-
-    const studentList = showStudentList?.data;
+    const [studentDataList , setStudentDataList] = useState([]);
     const [searchValue , setSearchValue] = useState("");
-    console.log("student list" , studentList);
+    // console.log("student list" , studentList);
 
     
     useEffect(() => {
         console.log(searchValue);
+        onSearch(searchValue);
     }, [searchValue])
 
-    function onSearch () {
-        console.log("search with ", searchValue)
-        electron.notificationApi.sendNotification('This is my message from the feeManagement');
+    async function onSearch () {
+            console.log("search with ", searchValue);
+
+            // sync call to Search Api
+            const result = await window.electronAPI.search(searchValue);
+            console.log("The result in the frontend", result);
+            setStudentDataList(result);
+
         
     };
 
@@ -37,10 +42,10 @@ const FeeManagement = () => {
                 onSearch={onSearch} 
                 enterButton />
             </Space>
-            <StudentList studentList={studentList}/>
-            <div className="footer-section">
+            <StudentList studentDataList={studentDataList}/>
+            {/* <div className="footer-section">
             <Pagination defaultCurrent={1} total={50} />
-            </div>
+            </div> */}
         </React.Fragment>
     )
 }
