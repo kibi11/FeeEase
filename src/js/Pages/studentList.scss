@@ -4,5 +4,13 @@
     height: calc(100% - 64px );
     padding: 24px;
   }
-.demo-loadmore-list > ul {
+
+.student-list-item {
+  padding: 10px !important;
+  cursor: pointer;
+  }
+  
+  .student-list-item:hover{
+  background-color: rgb(109, 170, 255);
+  color: white !important;
 }
