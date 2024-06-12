@@ -1,0 +1,56 @@
+@mixin flex-thing-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-thing-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.student-fee-profile-first{
+    height: calc(80%);
+    @include flex-thing-row;
+    align-items:flex-start;
+    gap: 20px;
+}
+
+.student-fee-profile-first > div {
+    width: 50%;
+}
+
+.student-fee-profile-details{
+
+}
+
+.student-fee-profile-details-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.calender-groups{
+    @include flex-thing-row;
+    gap: 10px;
+    div{
+        flex-grow: 1;
+    }
+}
+
+.calender-container >div {
+    @include flex-thing-column();
+    gap: 10px;
+}
+
+.student-fee-profile-second{
+
+    align-self: center;
+    display: flex;
+    justify-content: center;
+
+}
+.student-fee-profile-second > div {
+    flex-grow: 0.5;
+}

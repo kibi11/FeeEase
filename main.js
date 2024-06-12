@@ -48,10 +48,10 @@ app.whenReady().then(() => {
       console.log("This is ipc Main", value);
       let results;
       if (value.length == 0) {
-        results = await dbOperations(`SELECT * FROM student_details;`, value);
+        results = await dbOperations(`SELECT * FROM session_2024;`, value);
       } else {
         results = await dbOperations(
-          `SELECT * FROM student_details where '${value}' % ANY(STRING_TO_ARRAY(name,' '));`
+          `SELECT * FROM session_2024 where '${value}' % ANY(STRING_TO_ARRAY(name,' '));`
         );
       }
       console.log("This is result in ipc main", results);
@@ -67,7 +67,7 @@ app.whenReady().then(() => {
         return null;
       }
       results = await dbOperations(
-        `SELECT * FROM student_details where name = '${value?.name}'AND class = '${value?.class}' AND rollno = '${value?.rollno}';`
+        `SELECT * FROM session_2024 where name = '${value?.name}'AND class = '${value?.class}' AND rollno = '${value?.rollno}';`
       );
 
       console.log("This is result in ipc main", results);
