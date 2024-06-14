@@ -1,0 +1,10 @@
+{
+    "session_2024" : {
+        "month": 950,
+        "otherCharges" : {
+            "session_fee" : 1500,
+            "school_fund" : 1500,
+            "exam_fee": 200
+        }
+    }
+}

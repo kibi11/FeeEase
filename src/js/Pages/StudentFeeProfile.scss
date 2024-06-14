@@ -33,15 +33,29 @@
 
 .calender-groups{
     @include flex-thing-row;
-    gap: 10px;
+    gap: 20px;
     div{
-        flex-grow: 1;
+        width: 33%;
+        display: flex;
+
     }
+}
+
+.calender-item{
+    border: 1px solid #f0f0f0;
+}
+
+.calender-item::before{
+    content: "";
+    height: 100%;
+    width: 20px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 .calender-container >div {
     @include flex-thing-column();
-    gap: 10px;
+    gap: 20px;
 }
 
 .student-fee-profile-second{
@@ -53,4 +67,45 @@
 }
 .student-fee-profile-second > div {
     flex-grow: 0.5;
+}
+
+.student-fee-pay-modal-second{
+    @include flex-thing-column();
+    gap: 20px;
+}
+.student-fee-pay-modal-second-item {
+    border: 1px solid #f0f0f0;
+    div{
+        @include flex-thing-row();
+        justify-content: space-between;
+
+    }
+}
+
+.calender-item-mini-selected {
+    border: 1px solid #1677ff;
+}
+
+.student-fee-total{
+    text-align: end;
+    text-decoration: solid;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+// Colors for the Calender months
+
+.calender-item-color-paid::before{
+    background-color: #D5FC73;
+}
+
+
+.calender-item-color-pending::before{
+    background-color: #FF8585;
+}
+
+
+.calender-item-color-await::before{
+    background-color: #EBEBEB;
 }
