@@ -11,6 +11,8 @@ import {
   Input,
   Modal,
   Checkbox,
+  List,
+  Table,
 } from "antd";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import academicYearDataList from "../../config/academicYear.json";
@@ -36,10 +38,32 @@ const monthNames = [
   "March",
 ];
 
+const columnList = [
+  {
+    title: "Date",
+    key: "date",
+    render: (_, record) => {
+      let date = record.timestamp.toLocaleDateString();
+      return <>{date}</>;
+    },
+  },
+  {
+    title: "Amount",
+    dataIndex: "total_amount",
+    key: "total_amount",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+];
+
 const StudentFeeProfile = ({ selectedStudent, setSelectedStudent }) => {
   const [selectedStudentDetail, setSelectedStudentDetail] = useState();
   const [loading, setLoading] = useState(true);
   const [primaryDetails, setPrimaryDetails] = useState([]);
+  const [studentTransactions, setStudentTransactions] = useState([]);
   const [modalFormDetails, setModalFormDetails] = useState({
     monthIds: [...Array(12)],
     session_fee: false,
@@ -53,6 +77,7 @@ const StudentFeeProfile = ({ selectedStudent, setSelectedStudent }) => {
   useEffect(() => {
     if (loading) {
       SearchStudentDetails();
+      fetchTransaction();
     }
     console.log("Inside use", loading);
   }, []);
@@ -75,6 +100,15 @@ const StudentFeeProfile = ({ selectedStudent, setSelectedStudent }) => {
     });
     console.log("primary-temp", tempDetails);
     setPrimaryDetails(tempDetails);
+  }
+
+  // Main function to fetch transactions;
+  async function fetchTransaction() {
+    console.log("heloo", selectedStudent.admission_no);
+    let result = await window.electronAPI.fetch_transactions_all({
+      admission_no: selectedStudent.admission_no,
+    });
+    setStudentTransactions(result.slice(0, 3));
   }
 
   // on Fee Payment
@@ -164,18 +198,39 @@ const StudentFeeProfile = ({ selectedStudent, setSelectedStudent }) => {
 
   // on Pay Click
   const onModalConfirmClick = async () => {
-    let payload = { ...modalFormDetails };
-
-    for (var key in payload) {
+    let payload = {};
+    let result;
+    let fee_paid = {
+      monthIds: modalFormDetails.monthIds,
+      otherCharges: {},
+    };
+    for (var key in modalFormDetails) {
       let keyValues = ["session_fee", "school_fund", "exam_fee"];
-      if (keyValues.includes(key)) {
-        payload[key] = academicCharges.otherCharges[key];
+      if (keyValues.includes(key) && modalFormDetails[key]) {
+        fee_paid["otherCharges"][key] = academicCharges.otherCharges[key];
       }
     }
 
+    payload["fee_paid"] = fee_paid;
+    /// add other details to payload
+
+    const otherPayloadData = ["admission_no", "name"];
+
+    for (let key in otherPayloadData) {
+      payload[otherPayloadData[key]] =
+        selectedStudentDetail[otherPayloadData[key]];
+    }
+
+    // special Case
+    payload["class_value"] = selectedStudent.class;
+
+    // add total Amount
+    payload["total_amount"] = studentTotalAmount;
+
     console.log("The payload", payload);
     // make a api Call
-    const result = await window.electronAPI.make_student_payment(payload);
+    result = await window.electronAPI.make_student_payment(payload);
+    console.log("The api returned", result);
 
     if (!result) {
       // show payment Failure
@@ -230,28 +285,39 @@ const StudentFeeProfile = ({ selectedStudent, setSelectedStudent }) => {
       {/* <div>{selectedStudent?.name}</div> */}
       <div className="student-fee-profile-first">
         {/* left side  */}
-        <Card>
-          <h2>{selectedStudent?.name}</h2>
-          <Divider orientation="right">{`Class ${selectedStudent?.class}`}</Divider>
-          <div className="student-fee-profile-details">
-            {primaryDetails.map((item, index) => {
-              console.log("THis is item", item[0], item[1], index);
-              return (
-                <div className="student-fee-profile-details-info" key={index}>
-                  <div
-                    style={{
-                      width: "50%",
-                      color: "rgba(0, 0, 0, 0.45)",
-                    }}
-                  >
-                    {item[0]} :
+        <div className="student-fee-profile-first-container">
+          <Card>
+            <h2>{selectedStudent?.name}</h2>
+            <Divider orientation="right">{`Class ${selectedStudent?.class}`}</Divider>
+            <div className="student-fee-profile-details">
+              {primaryDetails.map((item, index) => {
+                console.log("THis is item", item[0], item[1], index);
+                return (
+                  <div className="student-fee-profile-details-info" key={index}>
+                    <div
+                      style={{
+                        width: "50%",
+                        color: "rgba(0, 0, 0, 0.45)",
+                      }}
+                    >
+                      {item[0]} :
+                    </div>
+                    <div style={{ width: "50%" }}>{item[1]}</div>
                   </div>
-                  <div style={{ width: "50%" }}>{item[1]}</div>
-                </div>
-              );
-            })}
-          </div>
-        </Card>
+                );
+              })}
+            </div>
+          </Card>
+          <Card title={"Last Transactions"}>
+            <Table
+              columns={columnList}
+              dataSource={studentTransactions}
+              pagination={{
+                position: ["none", "none"],
+              }}
+            ></Table>
+          </Card>
+        </div>
         {/* Right Side - Calender view */}
         {/* <Divider orientation="vertical"></Divider> */}
         <Card className="calender-container">

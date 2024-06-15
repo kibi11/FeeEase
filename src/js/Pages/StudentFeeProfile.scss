@@ -16,6 +16,11 @@
     gap: 20px;
 }
 
+.student-fee-profile-first-container{
+    @include flex-thing-column();
+    gap: 20px;
+}
+
 .student-fee-profile-first > div {
     width: 50%;
 }

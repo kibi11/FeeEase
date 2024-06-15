@@ -12,6 +12,15 @@ contextBridge.exposeInMainWorld("electronAPI", {
     console.log("This is the result of the student", result);
     return result;
   },
+  make_student_payment: (value) => {
+    const result = ipcRenderer.sendSync("make-student-payment", value);
+    console.log("The student result", result);
+    return result;
+  },
+  fetch_transactions_all: (value) => {
+    const result = ipcRenderer.sendSync("fetch_transactions", value);
+    return result;
+  },
 
   // : {
   //     search(message) {
