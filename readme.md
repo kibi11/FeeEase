@@ -1,4 +1,4 @@
-Fee Management System
+Fee Management System - A Electron App
 
 Author: Kibi11
 
